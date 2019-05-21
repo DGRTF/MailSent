@@ -45,7 +45,7 @@ namespace SMTP
             {
 
                 OpenFileDialog openFileDialog1 = new OpenFileDialog();
-                MessageBox.Show($"Click 'OK' and specify the address file");
+                MessageBox.Show($"Click 'OK' and specify the address file(format .xlsx");
                 if (openFileDialog1.ShowDialog() == DialogResult.OK)
                 {
                     try
