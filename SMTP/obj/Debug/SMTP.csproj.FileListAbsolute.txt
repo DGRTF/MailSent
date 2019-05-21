@@ -1,0 +1,7 @@
+C:\Users\dskgjn\source\repos\SMTP\SMTP\obj\Debug\SMTP.csprojAssemblyReference.cache
+C:\Users\dskgjn\source\repos\SMTP\SMTP\obj\Debug\SMTP.csproj.CoreCompileInputs.cache
+C:\Users\dskgjn\source\repos\SMTP\SMTP\bin\Debug\SMTP.exe.config
+C:\Users\dskgjn\source\repos\SMTP\SMTP\bin\Debug\SMTP.exe
+C:\Users\dskgjn\source\repos\SMTP\SMTP\bin\Debug\SMTP.pdb
+C:\Users\dskgjn\source\repos\SMTP\SMTP\obj\Debug\SMTP.exe
+C:\Users\dskgjn\source\repos\SMTP\SMTP\obj\Debug\SMTP.pdb
