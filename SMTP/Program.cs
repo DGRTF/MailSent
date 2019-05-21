@@ -58,8 +58,7 @@ namespace SMTP
                         $"Details:\n\n{ex.StackTrace}");
                     }
                 }
-                //Console.WriteLine(Path);
-                //Console.Read();
+
                 string con = "Data Source=";
                 string con1 = "; Mode=Read;Extended Properties='Excel 12.0'";
                 List<string> collection = new List<string>();
@@ -72,9 +71,7 @@ namespace SMTP
                 };
                 v.Open();
                 var vv = new Recordset();
-                //{
-                //    CursorType = (CursorTypeEnum)1
-                //};
+
                 vv.Open(ActiveConnection: v.ConnectionString, Source: "SELECT * FROM [Лист1$]");
                 int i = 0;
 
@@ -86,10 +83,12 @@ namespace SMTP
 
                         if (go.Name == "почта")
                         {
-                            Console.WriteLine(go.Value);
-                            Object t = (object)go.Value;
-                            collection.Add(t.ToString());
-                            i++;
+                            if (go.Value.ToString() != "")
+                            {
+                                Console.WriteLine(go.Value);
+                                collection.Add(go.Value.ToString());
+                                i++;
+                            }
                         }
                     }
                     vv.MoveNext();
@@ -128,12 +127,12 @@ namespace SMTP
                 })
                 {
 
-                    MailMessage mess = new MailMessage();
-                    //{
-                    mess.Body = Bo;
-                        mess.From = new MailAddress(MailFrom);
-                        mess.Subject = Sub;
-                    //};
+                    MailMessage mess = new MailMessage
+                    {
+                        Body = Bo,
+                        From = new MailAddress(MailFrom),
+                        Subject = Sub
+                    };
                     //mess.Attachments.Add(new Attachment(Path));
                     foreach (string to in ToMail.MailAdd)
                     {
@@ -157,26 +156,35 @@ namespace SMTP
         [STAThread]
         static void Main()
         {
-            SMTPclientt client = new SMTPclientt
+            for (; ; )
             {
-                //MailFrom = "Gena",
-                ToMail = new Exls()
-            };
-            Console.WriteLine("Please, enter Username");
-            client.MailFrom = Console.ReadLine();
-            Console.WriteLine("Please, enter Password");
-            client.UserPass = Console.ReadLine();
-            Console.WriteLine("Please, enter Subject");
-            client.Sub = Console.ReadLine();
-            Console.WriteLine("Please, enter Text Message");
-            client.Bo = Console.ReadLine();
+                try
+                {
+                    SMTPclientt client = new SMTPclientt
+                    {
+                        ToMail = new Exls()
+                    };
+                    Console.WriteLine("Please, enter Username");
+                    client.MailFrom = Console.ReadLine();
+                    Console.WriteLine("Please, enter Password");
+                    client.UserPass = Console.ReadLine();
+                    Console.WriteLine("Please, enter Subject");
+                    client.Sub = Console.ReadLine();
+                    Console.WriteLine("Please, enter Text Message");
+                    client.Bo = Console.ReadLine();
 
 
 
 
 
-            client.SMTPSendGmail();
-            Console.ReadKey();
+                    client.SMTPSendGmail();
+                    Console.ReadKey();
+                }
+                catch
+                {
+                    MessageBox.Show($"Try again");
+                }
+            }
         }
     }
 }
